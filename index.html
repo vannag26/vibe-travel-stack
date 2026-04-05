@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vibe Travel Stack — The Complete Traveler's Tech Bundle</title>
+  <meta name="description" content="One subscription. Four essential travel tools. Real-time currency exchange, global eSIM data, VPN protection, and instant translation. $35/mo. No contracts.">
+  <meta property="og:title" content="Vibe Travel Stack — Travel Smarter for $35/mo">
+  <meta property="og:description" content="FX rates + eSIM + VPN + Translation in one bundle. Built for global travelers.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8C96A;
+      --gold-dim: #8B6914;
+      --blue: #1A3A5C;
+      --blue-mid: #1E4D80;
+      --blue-light: #2E6DB4;
+      --bg: #060C14;
+      --bg2: #0B1420;
+      --bg3: #0F1C2E;
+      --text: #F0F4FA;
+      --text-dim: #8A9BB8;
+      --border: rgba(201,168,76,0.15);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 40px;
+      background: rgba(6,12,20,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-size: 1.1rem; font-weight: 800; letter-spacing: 0.04em;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      color: var(--text-dim); text-decoration: none; font-size: 0.88rem;
+      font-weight: 500; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-cta {
+      background: var(--gold); color: #000; padding: 9px 20px;
+      border-radius: 6px; font-weight: 700; font-size: 0.85rem;
+      text-decoration: none; transition: background 0.2s, transform 0.1s;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 120px 24px 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(30,77,128,0.35) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(201,168,76,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 100px; padding: 7px 16px; margin-bottom: 28px;
+      font-size: 0.78rem; font-weight: 600; color: var(--gold-light);
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .hero-badge::before { content: '✈'; font-size: 0.9rem; }
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 900; line-height: 1.08;
+      max-width: 900px; margin-bottom: 24px;
+    }
+    .hero h1 .gradient {
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, #A07820 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+      color: var(--text-dim); max-width: 620px;
+      margin: 0 auto 44px; font-weight: 400; line-height: 1.65;
+    }
+    .hero-sub strong { color: var(--text); font-weight: 600; }
+    .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      color: #000; padding: 16px 36px; border-radius: 8px;
+      font-weight: 800; font-size: 1rem; text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 4px 24px rgba(201,168,76,0.3);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(201,168,76,0.4); }
+    .btn-secondary {
+      background: transparent; color: var(--text); padding: 16px 36px;
+      border-radius: 8px; font-weight: 600; font-size: 1rem;
+      text-decoration: none; border: 1px solid rgba(240,244,250,0.2);
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .btn-secondary:hover { border-color: var(--gold); color: var(--gold-light); transform: translateY(-2px); }
+    .hero-price-note {
+      margin-top: 28px; font-size: 0.85rem; color: var(--text-dim);
+    }
+    .hero-price-note strong { color: var(--gold-light); }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--bg2); border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 28px 24px;
+    }
+    .stats-inner {
+      max-width: 960px; margin: 0 auto;
+      display: flex; justify-content: space-around; flex-wrap: wrap; gap: 24px;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-size: 1.9rem; font-weight: 900;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      line-height: 1;
+    }
+    .stat-label { font-size: 0.8rem; color: var(--text-dim); margin-top: 5px; letter-spacing: 0.04em; }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 90px 24px; }
+    .section-label {
+      text-align: center; font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 14px;
+    }
+    .section-title {
+      text-align: center; font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+      font-weight: 800; line-height: 1.2; max-width: 700px;
+      margin: 0 auto 16px;
+    }
+    .section-sub {
+      text-align: center; color: var(--text-dim); font-size: 1.05rem;
+      max-width: 560px; margin: 0 auto 60px; line-height: 1.65;
+    }
+    .container { max-width: 1080px; margin: 0 auto; }
+
+    /* ── STACK CARDS ── */
+    .stack-section { background: var(--bg); }
+    .stack-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .stack-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 14px; padding: 32px 28px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .stack-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-3px); }
+    .card-icon {
+      font-size: 2.2rem; margin-bottom: 16px; display: block;
+    }
+    .card-title {
+      font-size: 1.15rem; font-weight: 700; margin-bottom: 10px;
+      color: var(--gold-light);
+    }
+    .card-desc { font-size: 0.9rem; color: var(--text-dim); line-height: 1.6; }
+    .card-feature {
+      margin-top: 16px; padding-top: 16px;
+      border-top: 1px solid var(--border);
+      font-size: 0.82rem; color: var(--text-dim);
+    }
+    .card-feature span { color: var(--gold-light); font-weight: 600; }
+
+    /* ── COMPARISON ── */
+    .comparison-section { background: var(--bg2); }
+    .comparison-table {
+      width: 100%; border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    .comparison-table th {
+      padding: 14px 20px; text-align: center;
+      font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      border-bottom: 2px solid var(--border); color: var(--text-dim);
+    }
+    .comparison-table th.highlight { color: var(--gold-light); }
+    .comparison-table td {
+      padding: 16px 20px; text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .comparison-table td:first-child { text-align: left; font-weight: 500; }
+    .comparison-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .check { color: #4CAF50; font-size: 1.1rem; }
+    .cross { color: #666; font-size: 1rem; }
+    .highlight-col { background: rgba(201,168,76,0.06); }
+    .price-highlight {
+      color: var(--gold-light); font-weight: 800; font-size: 1rem;
+    }
+
+    /* ── PRICING ── */
+    .pricing-section { background: var(--bg); }
+    .pricing-card {
+      max-width: 480px; margin: 0 auto;
+      background: var(--bg2);
+      border: 2px solid var(--gold);
+      border-radius: 20px; padding: 48px 40px; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .pricing-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+    }
+    .best-value-badge {
+      display: inline-block; background: var(--gold); color: #000;
+      font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 5px 14px; border-radius: 100px;
+      margin-bottom: 24px;
+    }
+    .pricing-amount {
+      font-size: 4rem; font-weight: 900; line-height: 1;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .pricing-period { font-size: 1rem; color: var(--text-dim); margin-bottom: 8px; }
+    .pricing-sub { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 36px; }
+    .pricing-features { list-style: none; margin-bottom: 36px; text-align: left; }
+    .pricing-features li {
+      padding: 11px 0; border-bottom: 1px solid var(--border);
+      font-size: 0.92rem; display: flex; align-items: center; gap: 12px;
+    }
+    .pricing-features li:last-child { border-bottom: none; }
+    .pricing-features li::before { content: '✓'; color: var(--gold); font-weight: 800; font-size: 1rem; flex-shrink: 0; }
+    .pricing-cta {
+      display: block; width: 100%;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      color: #000; padding: 18px; border-radius: 10px;
+      font-weight: 800; font-size: 1.05rem; text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 4px 20px rgba(201,168,76,0.3);
+    }
+    .pricing-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,168,76,0.4); }
+    .pricing-note { margin-top: 16px; font-size: 0.8rem; color: var(--text-dim); }
+
+    /* ── WAITLIST ── */
+    .waitlist-section {
+      background: var(--bg3);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .waitlist-box {
+      max-width: 560px; margin: 0 auto; text-align: center;
+    }
+    .waitlist-box h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800; margin-bottom: 14px;
+    }
+    .waitlist-box p {
+      color: var(--text-dim); margin-bottom: 32px; font-size: 1rem;
+    }
+    .waitlist-form { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+    .waitlist-input {
+      flex: 1; min-width: 240px;
+      background: var(--bg2); border: 1px solid var(--border);
+      color: var(--text); padding: 16px 20px; border-radius: 8px;
+      font-size: 0.95rem; font-family: inherit;
+      outline: none; transition: border-color 0.2s;
+    }
+    .waitlist-input:focus { border-color: var(--gold); }
+    .waitlist-input::placeholder { color: var(--text-dim); }
+    .waitlist-btn {
+      background: var(--gold); color: #000; padding: 16px 28px;
+      border-radius: 8px; font-weight: 800; font-size: 0.95rem;
+      border: none; cursor: pointer; font-family: inherit;
+      transition: background 0.2s, transform 0.1s;
+      white-space: nowrap;
+    }
+    .waitlist-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .waitlist-success {
+      display: none; padding: 16px 24px;
+      background: rgba(76,175,80,0.1); border: 1px solid rgba(76,175,80,0.3);
+      border-radius: 8px; color: #81C784; font-weight: 600; margin-top: 16px;
+    }
+    .waitlist-perks {
+      display: flex; justify-content: center; gap: 24px;
+      margin-top: 24px; flex-wrap: wrap;
+    }
+    .perk { font-size: 0.82rem; color: var(--text-dim); display: flex; align-items: center; gap: 6px; }
+    .perk::before { content: '✓'; color: var(--gold); font-weight: 700; }
+
+    /* ── USE CASES ── */
+    .use-section { background: var(--bg2); }
+    .use-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .use-card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 12px; padding: 28px 24px;
+    }
+    .use-emoji { font-size: 2rem; margin-bottom: 14px; display: block; }
+    .use-title { font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: var(--gold-light); }
+    .use-text { font-size: 0.88rem; color: var(--text-dim); line-height: 1.65; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg); border-top: 1px solid var(--border);
+      padding: 48px 24px 32px; text-align: center;
+    }
+    .footer-logo {
+      font-size: 1.1rem; font-weight: 800;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+    .footer-sub { font-size: 0.82rem; color: var(--text-dim); margin-bottom: 28px; }
+    .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 32px; }
+    .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.83rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold-light); }
+    .footer-copy { font-size: 0.78rem; color: #3A4A60; }
+
+    @media (max-width: 700px) {
+      nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 20px 60px; }
+      section { padding: 60px 20px; }
+      .pricing-card { padding: 36px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">VIBE TRAVEL STACK</div>
+  <div class="nav-links">
+    <a href="#stack">The Stack</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#compare">Compare</a>
+    <a href="#waitlist">Early Access</a>
+  </div>
+  <a href="https://buy.stripe.com/8x26oH6fW5bE4dPb267Vm0j" class="nav-cta" target="_blank">Subscribe — $35/mo</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">✅ Now Live — April 2026</div>
+  <h1>Travel the World.<br><span class="gradient">One Stack. One Price.</span></h1>
+  <p class="hero-sub">
+    Stop juggling 4 different subscriptions. Vibe Travel Stack bundles
+    <strong>real-time currency exchange, global eSIM data, VPN protection, and AI translation</strong>
+    into one seamless subscription.
+  </p>
+  <div class="hero-actions">
+    <a href="https://buy.stripe.com/8x26oH6fW5bE4dPb267Vm0j" class="btn-primary" target="_blank">Start Subscription — $35/mo →</a>
+    <a href="#stack" class="btn-secondary">See What's Included</a>
+  </div>
+  <p class="hero-price-note"><strong>$35/month</strong> · No contracts · Cancel anytime</p>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">$35</div>
+      <div class="stat-label">Per Month, All 4 Tools</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">1.4B</div>
+      <div class="stat-label">Global Travelers Annually</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">190+</div>
+      <div class="stat-label">Countries Covered</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">100+</div>
+      <div class="stat-label">Currencies Supported</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">$0</div>
+      <div class="stat-label">Setup Fee</div>
+    </div>
+  </div>
+</div>
+
+<!-- THE STACK -->
+<section class="stack-section" id="stack">
+  <div class="container">
+    <div class="section-label">What's Included</div>
+    <h2 class="section-title">Four Tools. Zero Overlap. Total Coverage.</h2>
+    <p class="section-sub">Every traveler needs these four things. Now they come in one subscription, built and powered by Vibe Technologies.</p>
+    <div class="stack-grid">
+
+      <div class="stack-card">
+        <span class="card-icon">💱</span>
+        <div class="card-title">RateWire FX</div>
+        <div class="card-desc">Real-time currency exchange rates for 100+ currencies. Know exactly what you're paying before you swipe. Live rates updated every 60 seconds.</div>
+        <div class="card-feature">Powered by <span>RateWire API</span> — enterprise-grade accuracy</div>
+      </div>
+
+      <div class="stack-card">
+        <span class="card-icon">📡</span>
+        <div class="card-title">Global eSIM</div>
+        <div class="card-desc">Stay connected in 190+ countries without swapping SIM cards or paying roaming fees. Activate your data plan before you land.</div>
+        <div class="card-feature">Data plans starting at <span>$0 extra</span> for base coverage</div>
+      </div>
+
+      <div class="stack-card">
+        <span class="card-icon">🛡</span>
+        <div class="card-title">Travel VPN</div>
+        <div class="card-desc">Protect your banking, passwords, and personal data on hotel WiFi, airports, and public networks in every country.</div>
+        <div class="card-feature">Military-grade encryption. <span>Zero-log policy.</span></div>
+      </div>
+
+      <div class="stack-card">
+        <span class="card-icon">🌐</span>
+        <div class="card-title">AI Translation</div>
+        <div class="card-desc">Instant real-time translation in 100+ languages. Text, speech, menus, signs — communicate naturally anywhere in the world.</div>
+        <div class="card-feature">Powered by <span>AI engine</span> — not just phrasebooks</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section class="comparison-section" id="compare">
+  <div class="container">
+    <div class="section-label">vs. The Competition</div>
+    <h2 class="section-title">Everyone Else Sells You Pieces. We Sell the Whole Stack.</h2>
+    <p class="section-sub">Buying these tools separately costs $80–$140/month. We bundle all four for $35.</p>
+    <div style="overflow-x: auto; border-radius: 12px; border: 1px solid var(--border);">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th style="text-align:left">Feature</th>
+            <th class="highlight">Vibe Travel Stack</th>
+            <th>Wise / Revolut</th>
+            <th>Airalo</th>
+            <th>NordVPN</th>
+            <th>Google Translate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Real-Time FX Rates</td>
+            <td class="highlight-col"><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+          </tr>
+          <tr>
+            <td>Global eSIM</td>
+            <td class="highlight-col"><span class="check">✓</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+          </tr>
+          <tr>
+            <td>VPN Protection</td>
+            <td class="highlight-col"><span class="check">✓</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="cross">✗</span></td>
+          </tr>
+          <tr>
+            <td>AI Translation</td>
+            <td class="highlight-col"><span class="check">✓</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Single App / Dashboard</td>
+            <td class="highlight-col"><span class="check">✓</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+          </tr>
+          <tr>
+            <td>Monthly Price</td>
+            <td class="highlight-col"><span class="price-highlight">$35</span></td>
+            <td>$9.99</td>
+            <td>varies</td>
+            <td>$11.99</td>
+            <td>Free / $9.99</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="text-align:center; font-size:0.82rem; color:var(--text-dim); margin-top:20px;">
+      Competitor tools combined = $80–$140/mo. Vibe Travel Stack = <strong style="color:var(--gold-light)">$35/mo</strong> for all four.
+    </p>
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section class="use-section">
+  <div class="container">
+    <div class="section-label">Who It's For</div>
+    <h2 class="section-title">Built for Every Type of Traveler</h2>
+    <p class="section-sub">Heavy travel season is here. Stop overpaying for disconnected tools.</p>
+    <div class="use-grid">
+      <div class="use-card">
+        <span class="use-emoji">💼</span>
+        <div class="use-title">Business Travelers</div>
+        <div class="use-text">Know exact exchange rates before client dinners. Secure your banking on hotel WiFi. Stay connected on overseas calls without roaming shock.</div>
+      </div>
+      <div class="use-card">
+        <span class="use-emoji">🌍</span>
+        <div class="use-title">Digital Nomads</div>
+        <div class="use-text">Work from anywhere. One subscription covers your data, your security, your currency conversions, and your communication — in every country.</div>
+      </div>
+      <div class="use-card">
+        <span class="use-emoji">✈️</span>
+        <div class="use-title">Frequent Flyers</div>
+        <div class="use-text">Heavy travel season demands heavy-duty tools. Land in any country already set up — eSIM activated, VPN on, rates live, translation ready.</div>
+      </div>
+      <div class="use-card">
+        <span class="use-emoji">🎒</span>
+        <div class="use-title">Adventure Travelers</div>
+        <div class="use-text">Explore off-the-beaten-path destinations with confidence. Translate signs, menus, and conversations. Stay connected even where your carrier doesn't go.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+  <div class="container">
+    <div class="section-label">Simple Pricing</div>
+    <h2 class="section-title">One Plan. Everything Included.</h2>
+    <p class="section-sub">No tiers. No add-ons. No gotchas. Just one flat price for the complete traveler's stack.</p>
+
+    <div class="pricing-card">
+      <div class="best-value-badge">Best Value in Travel Tech</div>
+      <div class="pricing-amount">$35</div>
+      <div class="pricing-period">per month</div>
+      <div class="pricing-sub">Cancel anytime. No annual commitment required.</div>
+      <ul class="pricing-features">
+        <li>RateWire FX — 100+ currencies, live rates</li>
+        <li>Global eSIM — 190+ countries covered</li>
+        <li>Travel VPN — zero-log, military-grade encryption</li>
+        <li>AI Translation — 100+ languages, real-time</li>
+        <li>Single dashboard — all tools in one app</li>
+        <li>Priority customer support</li>
+        <li>No contracts, cancel anytime</li>
+      </ul>
+      <a href="https://buy.stripe.com/8x26oH6fW5bE4dPb267Vm0j" class="pricing-cta" target="_blank">Subscribe Now — $35/mo →</a>
+      <p class="pricing-note">No contracts. Cancel anytime. Instant access after payment.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SUBSCRIBE -->
+<section class="waitlist-section" id="waitlist">
+  <div class="waitlist-box">
+    <div class="section-label">Now Live</div>
+    <h2>Start Traveling Smarter.<br>Subscribe Today.</h2>
+    <p>Vibe Travel Stack is live. One subscription — real-time FX, global eSIM, VPN, and AI translation. $35/month, cancel anytime.</p>
+    <div style="margin-top: 8px;">
+      <a href="https://buy.stripe.com/8x26oH6fW5bE4dPb267Vm0j" target="_blank" class="waitlist-btn" style="display:inline-block; text-decoration:none; padding: 18px 40px; font-size: 1.05rem; border-radius: 8px;">Subscribe Now — $35/mo →</a>
+    </div>
+    <div style="display:none" id="waitlistSuccess">
+      🎉 You're on the list! We'll notify you at launch.
+    </div>
+    <div class="waitlist-perks">
+      <div class="perk">No spam, ever</div>
+      <div class="perk">Launch-day notification</div>
+      <div class="perk">Priority onboarding</div>
+      <div class="perk">Locked launch pricing</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">VIBE TRAVEL STACK</div>
+  <div class="footer-sub">A Vibe Technologies LLC product · Powered by V&DG Management</div>
+  <div class="footer-links">
+    <a href="#stack">The Stack</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#compare">Compare</a>
+    <a href="#waitlist">Early Access</a>
+    <a href="https://ratewire.io" target="_blank">RateWire API</a>
+  </div>
+  <div class="footer-copy">© 2026 Vibe Technologies LLC. All rights reserved.</div>
+</footer>
+
+<script>
+  // Smooth nav scroll active state
+  const sections = document.querySelectorAll('section[id], div[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.getAttribute('id');
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current
+        ? 'var(--gold-light)' : '';
+    });
+  });
+
+  // Waitlist form
+  document.getElementById('waitlistForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = document.getElementById('waitlistEmail').value;
+    // Store locally and show success (replace with actual API call at launch)
+    const leads = JSON.parse(localStorage.getItem('vts_leads') || '[]');
+    leads.push({ email, ts: new Date().toISOString() });
+    localStorage.setItem('vts_leads', JSON.stringify(leads));
+    document.getElementById('waitlistForm').style.display = 'none';
+    document.getElementById('waitlistSuccess').style.display = 'block';
+    console.log('Early access signup:', email);
+  });
+</script>
+
+</body>
+</html>
